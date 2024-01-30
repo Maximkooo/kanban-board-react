@@ -1,0 +1,27 @@
+.dashboard {
+  &__container {
+    display: flex;
+  }
+
+  &__template {
+    padding: 20px;
+  }
+
+  &__statuses {
+    display: flex;
+  }
+}
+
+.list {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(171, 167, 167);
+    min-width: 250px;
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

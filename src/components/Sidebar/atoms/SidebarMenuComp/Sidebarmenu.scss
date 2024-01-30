@@ -1,23 +1,32 @@
 .sidebar {
 	&__menu {
-		max-width: 250px;
-		width: 100%;
+		// max-width: 250px;
+		// width: 500px;
 		display: flex;
 		align-items: center;
 		justify-content: space-evenly;
 		margin: 0 10px 20px;
 	}
+
 	&__logo {
 		width: 30px;
 		height: 30px;
+
 		img {
 			height: 100%;
 			width: 100%;
 		}
 	}
+
 	&__title {
 		p {
 			font-weight: bold;
 		}
+	}
+
+	&__container {
+		// background: red;
+		padding: 10px;
+
 	}
 }
