@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import EditTask from '../components/EditTask';
 
 const CreateTask = () => {
-  return (
-    <div>helloWorld</div>
-  )
-}
+	return (
+		<div>
+			<EditTask />
+		</div>
+	);
+};
 
-export default CreateTask
+export default CreateTask;
