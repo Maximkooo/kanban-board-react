@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 
 const Card = ({ task }) => {
   const [priorityIcon, setPriorityIcon] = useState(lowPriority)
+  const [isEndDateActual, setIsEndDateActual] = useState(false)
+
   const priorityKeys = {
     Low: lowPriority,
     Medium: mediumPriority,
@@ -14,11 +16,23 @@ const Card = ({ task }) => {
   }
 
   useEffect(() => {
-    if (task.priority) {
-      setPriorityIcon(priorityKeys[task.priority])
+    priorityIconHandler(task.priority)
+    if (isEndDateActualHandler(task.dueDate)) {
+      setIsEndDateActual(true)
     }
+  }, [])
 
-  }, [priorityIcon])
+  const priorityIconHandler = (priority) => {
+    if (priority) {
+      setPriorityIcon(priorityKeys[priority])
+    }
+  }
+
+  const isEndDateActualHandler = (dueDate) => {
+    return dueDate ? new Date(dueDate) - new Date() > 0 : false
+  }
+
+
 
   return (
     <Link to={`/update-task/${task.id}`}>

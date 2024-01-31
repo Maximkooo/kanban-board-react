@@ -12,7 +12,7 @@ const mockData = [
         "assignee": "Mary Davis",
         "priority": "High",
         "createdDate": "2023-09-15",
-        "dueDate": "2023-09-30"
+        "dueDate": "2024-02-01"
       },
       {
         id: uuidv4(),
