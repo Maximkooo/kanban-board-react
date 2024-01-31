@@ -16,7 +16,7 @@ const Sidebar = () => {
 			<Link to="/task_pending">
 				<SidebarMenu icon={writing_pad_icon} title="Pending Task" />
 			</Link>
-			<Link to="/taks_inprogres">
+			<Link to="/task_inprogress">
 				<SidebarMenu icon={writing_pad_icon} title="In Progress " />
 			</Link>
 			<Link to="/task_done">
