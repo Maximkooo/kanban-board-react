@@ -7,9 +7,9 @@
 		transition: all 0.5s ease-in-out;
 		cursor: pointer;
 
-		&:hover{
-				color: blue;
-				fill:blue
+		&:hover {
+			color: blue;
+			fill: blue;
 		}
 	}
 
@@ -25,9 +25,6 @@
 
 	&__title {
 		width: 55%;
-	
-		p{
-		}
 	}
 
 	&__container {
