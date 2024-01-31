@@ -6,4 +6,4 @@ const InProgressTask = () => {
   )
 }
 
-export default InProgresTask
+export default InProgressTask
