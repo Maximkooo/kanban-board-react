@@ -10,22 +10,22 @@ const Sidebar = () => {
 	return (
 		<div className="sidebar__container primary-background">
 			<SidebarHeader />
-			<Link to="/task_create">
+			<Link to="/task-create">
 				<SidebarMenu icon={writing_pad_icon} title="Create Task" />
 			</Link>
-			<Link to="/task_pending">
+			<Link to="/task-pending">
 				<SidebarMenu icon={writing_pad_icon} title="Pending Task" />
 			</Link>
-			<Link to="/task_inprogress">
+			<Link to="/task-inprogress">
 				<SidebarMenu icon={writing_pad_icon} title="In Progress " />
 			</Link>
-			<Link to="/task_done">
+			<Link to="/task-done">
 				<SidebarMenu icon={writing_pad_icon} title="Done" />
 			</Link>
-			<Link to="/task_review">
+			<Link to="/task-review">
 				<SidebarMenu icon={writing_pad_icon} title="In Review" />
 			</Link>
-			<Link to="/task_overall">
+			<Link to="/task-overall">
 				<SidebarMenu icon={writing_pad_icon} title="All Tasks" />
 			</Link>
 		</div>
