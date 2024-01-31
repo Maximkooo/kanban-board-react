@@ -1,14 +1,12 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-import "./Sidebarmenu.scss";
-// eslint-disable-next-line react/prop-types
+import React from 'react';
+import './Sidebar.scss';
 const SidebarMenu = ({ icon, title }) => {
 	return (
-		<div className="sidebar__menu">
-			<div className="sidebar__logo">
+		<div className=" sidebar__menu">
+			<div className="  sidebar__logo">
 				<img src={icon} alt="" />
 			</div>
-			<div className="sidebar__title">
+			<div className=" sidebar__title">
 				<p>{title}</p>
 			</div>
 		</div>
