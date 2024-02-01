@@ -9,28 +9,26 @@ const EditTask = ({
 	createdDate,
 	dueDate,
 }) => {
+	const someDate = new Date();
+	const date = someDate.setDate(someDate.getDate());
+	const defaultValue = new Date(date).toISOString().split('T')[0];
+
 	const [taskForm, setTaskForm] = useState({
 		title: '',
 		description: '',
 		assignee: '',
-		priority: '',
-		createdDate: '',
+		priority: 'Low',
+		createdDate: defaultValue,
 		dueDate: '',
 	});
-  // const  [inputValue, setInputValue] =  useState('');
-
-	// const  handleChange = (event) => {
-	// 	setInputValue(event.target.value);
-	// };
 	const handleChange = (event) => {
-		const [name, value] = event.target;
+		const { name, value } = event.target;
 		setTaskForm((prevTaskForm) => ({
 			...prevTaskForm,
 			[name]: value,
 		}));
 	};
 	const priorityHandler = (value) => {
-		// setTaskForm(taskForm.priority === value)
 		setTaskForm((prevState) => ({
 			...prevState,
 			priority: value,
@@ -38,12 +36,11 @@ const EditTask = ({
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// Here you can perform any actions with the form data
 		console.log('Form submitted:', taskForm);
 	};
 	return (
 		<div className=" container">
-			<form className="w-full max-w-lg mx-auto"  onSubmit={handleSubmit}>
+			<form className="w-full max-w-lg mx-auto" onSubmit={handleSubmit}>
 				<div className="flex flex-col flex-wrap -mx-3 mb-6">
 					<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
@@ -52,13 +49,12 @@ const EditTask = ({
 						>
 							Title
 						</label>
-						<input onChange={handleChange}
+						<input
+							onChange={handleChange}
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 							id="grid-first-name"
-              // value={inputValue}
-              value={taskForm.title}
+							name="title"
 							type="text"
-							placeholder={title}
 						/>
 					</div>
 					<div className="w-full md:w-1/2 px-3">
@@ -69,10 +65,11 @@ const EditTask = ({
 							Description
 						</label>
 						<textarea
+							onChange={handleChange}
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 							id="grid-last-name"
 							type="text"
-							placeholder={description}
+							name="description"
 						/>
 					</div>
 				</div>
@@ -116,12 +113,16 @@ const EditTask = ({
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="grid-city"
 						>
-							Create Date {createdDate}
+							Create Date
 						</label>
 						<input
+							onChange={handleChange}
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 							id="grid-city"
-							type="text"
+							type="date"
+							name={createdDate}
+							defaultValue={defaultValue}
+							disabled
 						/>
 					</div>
 					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -129,12 +130,14 @@ const EditTask = ({
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="grid-zip"
 						>
-							Due Date{dueDate}
+							Due Date
 						</label>
 						<input
+							onChange={handleChange}
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 							id="grid-zip"
-							type="text"
+							type="date"
+							name="dueDate"
 						/>
 					</div>
 					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -142,18 +145,23 @@ const EditTask = ({
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 							htmlFor="grid-zip"
 						>
-							Assignee {assignee}
+							Assignee
 						</label>
 						<input
+							onChange={handleChange}
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 							id="grid-zip"
 							type="text"
+							name="assignee"
 						/>
 					</div>
 				</div>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Submit
-        </button>
+				<button
+					type="submit"
+					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+				>
+					Submit
+				</button>
 			</form>
 		</div>
 	);
