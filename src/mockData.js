@@ -12,7 +12,7 @@ const mockData = [
         "assignee": "Mary Davis",
         "priority": "High",
         "createdDate": "2023-09-15",
-        "dueDate": "2024-02-01"
+        "dueDate": "2024-03-03"
       },
       {
         id: uuidv4(),
@@ -43,7 +43,7 @@ const mockData = [
   },
   {
     id: uuidv4(),
-    title: ' ⭕ Code Review',
+    title: ' ⭕ Review',
     tasks: [
       {
         "id": uuidv4(),
@@ -52,7 +52,7 @@ const mockData = [
         "assignee": "David Wilson",
         "priority": "Low",
         "createdDate": "2023-09-19",
-        "dueDate": "2023-09-30"
+        "dueDate": "2024-09-30"
       }
     ]
   },
