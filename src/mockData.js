@@ -12,7 +12,8 @@ const mockData = [
         "assignee": "Mary Davis",
         "priority": "High",
         "createdDate": "2023-09-15",
-        "dueDate": "2024-03-03"
+        "dueDate": "2024-03-03",
+        "visible": true
       },
       {
         id: uuidv4(),
@@ -21,7 +22,8 @@ const mockData = [
         "assignee": "Jane Smith",
         "priority": "Medium",
         "createdDate": "2023-09-16",
-        "dueDate": "2023-10-10"
+        "dueDate": "2023-10-10",
+        "visible": true
       },
 
     ]
@@ -37,7 +39,8 @@ const mockData = [
         "assignee": "Sarah Brown",
         "priority": "High",
         "createdDate": "2023-09-18",
-        "dueDate": "2023-10-05"
+        "dueDate": "2023-10-05",
+        "visible": true
       },
     ]
   },
@@ -52,7 +55,8 @@ const mockData = [
         "assignee": "David Wilson",
         "priority": "Low",
         "createdDate": "2023-09-19",
-        "dueDate": "2024-09-30"
+        "dueDate": "2024-09-30",
+        "visible": true
       }
     ]
   },
@@ -67,7 +71,8 @@ const mockData = [
         "assignee": "Mark Johnson",
         "priority": "High",
         "createdDate": "2023-09-17",
-        "dueDate": "2023-09-25"
+        "dueDate": "2023-09-25",
+        "visible": true
       },
     ]
   }
