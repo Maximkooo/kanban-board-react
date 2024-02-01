@@ -1,5 +1,4 @@
 import React from 'react'
-import { TERipple } from 'tw-elements-react';
 
 
 const FilterCards = () => {
