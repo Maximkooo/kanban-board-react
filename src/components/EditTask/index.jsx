@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import { PRIORITY, TASKS } from '../../common/constants';
-
+import { v4 as uuidv4 } from 'uuid';
 const EditTask = ({
-	title,
-	description,
-	assignee,
-	priority,
-	createdDate,
-	dueDate,
+	id
 }) => {
 	const someDate = new Date();
 	const date = someDate.setDate(someDate.getDate());
 	const defaultValue = new Date(date).toISOString().split('T')[0];
 
-	const [tasks, setTasks] = useState(TASKS);
 	const [taskForm, setTaskForm] = useState({
 		title: '',
 		description: '',
@@ -37,16 +31,15 @@ const EditTask = ({
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const newTask = { ...taskForm };
-		setTasks((prevState) => [...prevState, newTask]);
-    //clear the edit task state
+
+		//clear the edit task state
 		setTaskForm({
 			title: '',
 			description: '',
 			assignee: '',
 			priority: 'Low',
 			createdDate: defaultValue,
-			dueDate: '', 
+			dueDate: '',
 		});
 		console.log('Form submitted:', taskForm);
 	};
@@ -132,7 +125,6 @@ const EditTask = ({
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 							id="grid-city"
 							type="date"
-							name={createdDate}
 							defaultValue={defaultValue}
 							disabled
 						/>
