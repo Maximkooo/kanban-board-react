@@ -9,32 +9,54 @@ const EditTask = ({
 	createdDate,
 	dueDate,
 }) => {
-
 	const [taskForm, setTaskForm] = useState({
 		title: '',
 		description: '',
 		assignee: '',
-		priority: 'Low',
+		priority: '',
 		createdDate: '',
 		dueDate: '',
 	});
-  const priorityHandler=(value)=>{
-console.log(value);
-  }
+  // const  [inputValue, setInputValue] =  useState('');
+
+	// const  handleChange = (event) => {
+	// 	setInputValue(event.target.value);
+	// };
+	const handleChange = (event) => {
+		const [name, value] = event.target;
+		setTaskForm((prevTaskForm) => ({
+			...prevTaskForm,
+			[name]: value,
+		}));
+	};
+	const priorityHandler = (value) => {
+		// setTaskForm(taskForm.priority === value)
+		setTaskForm((prevState) => ({
+			...prevState,
+			priority: value,
+		}));
+	};
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// Here you can perform any actions with the form data
+		console.log('Form submitted:', taskForm);
+	};
 	return (
 		<div className=" container">
-			<form className="w-full max-w-lg mx-auto">
-				<div className="flex flex-wrap -mx-3 mb-6">
+			<form className="w-full max-w-lg mx-auto"  onSubmit={handleSubmit}>
+				<div className="flex flex-col flex-wrap -mx-3 mb-6">
 					<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="grid-first-name"
+							htmlFor="grid-first-name"
 						>
 							Title
 						</label>
-						<input
+						<input onChange={handleChange}
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 							id="grid-first-name"
+              // value={inputValue}
+              value={taskForm.title}
 							type="text"
 							placeholder={title}
 						/>
@@ -42,7 +64,7 @@ console.log(value);
 					<div className="w-full md:w-1/2 px-3">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="grid-last-name"
+							htmlFor="grid-last-name"
 						>
 							Description
 						</label>
@@ -54,11 +76,11 @@ console.log(value);
 						/>
 					</div>
 				</div>
-				<div className="flex flex-wrap -mx-3 mb-6">
+				<div className="flex flex-wrap -mx-3 mb-6  bebra">
 					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="grid-state"
+							htmlFor="grid-state"
 						>
 							Priority
 						</label>
@@ -68,7 +90,12 @@ console.log(value);
 								id="grid-state"
 							>
 								{PRIORITY.map((prior, idx) => (
-									<option onClick={(el)=>priorityHandler(el.target.value)} key={idx}>{prior}</option>
+									<option
+										onClick={(el) => priorityHandler(el.target.value)}
+										key={idx}
+									>
+										{prior}
+									</option>
 								))}
 							</select>
 							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -83,11 +110,11 @@ console.log(value);
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-wrap -mx-3 mb-2">
+				<div className="flex flex-wrap -mx-3 mb-2 bebra">
 					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="grid-city"
+							htmlFor="grid-city"
 						>
 							Create Date {createdDate}
 						</label>
@@ -100,7 +127,7 @@ console.log(value);
 					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="grid-zip"
+							htmlFor="grid-zip"
 						>
 							Due Date{dueDate}
 						</label>
@@ -113,7 +140,7 @@ console.log(value);
 					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="grid-zip"
+							htmlFor="grid-zip"
 						>
 							Assignee {assignee}
 						</label>
@@ -124,6 +151,9 @@ console.log(value);
 						/>
 					</div>
 				</div>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Submit
+        </button>
 			</form>
 		</div>
 	);
