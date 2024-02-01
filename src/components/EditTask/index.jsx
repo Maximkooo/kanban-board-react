@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PRIORITY } from '../../common/constants';
+import { PRIORITY, TASKS } from '../../common/constants';
 
 const EditTask = ({
 	title,
@@ -13,6 +13,7 @@ const EditTask = ({
 	const date = someDate.setDate(someDate.getDate());
 	const defaultValue = new Date(date).toISOString().split('T')[0];
 
+	const [tasks, setTasks] = useState(TASKS);
 	const [taskForm, setTaskForm] = useState({
 		title: '',
 		description: '',
@@ -36,6 +37,17 @@ const EditTask = ({
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		const newTask = { ...taskForm };
+		setTasks((prevState) => [...prevState, newTask]);
+    //clear the edit task state
+		setTaskForm({
+			title: '',
+			description: '',
+			assignee: '',
+			priority: 'Low',
+			createdDate: defaultValue,
+			dueDate: '', 
+		});
 		console.log('Form submitted:', taskForm);
 	};
 	return (
