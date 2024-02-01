@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { PRIORITY, TASKS } from '../../common/constants';
 import { v4 as uuidv4 } from 'uuid';
-const EditTask = ({
-	id
-}) => {
+import mockData from '../../mockData';
+const EditTask = ({ id }) => {
 	const someDate = new Date();
 	const date = someDate.setDate(someDate.getDate());
 	const defaultValue = new Date(date).toISOString().split('T')[0];
 
 	const [taskForm, setTaskForm] = useState({
+		id: uuidv4(),
 		title: '',
 		description: '',
 		assignee: '',
@@ -31,7 +31,8 @@ const EditTask = ({
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
+		console.log(mockData[0].tasks);
+    mockData[0].tasks.push(taskForm)
 		//clear the edit task state
 		setTaskForm({
 			title: '',
