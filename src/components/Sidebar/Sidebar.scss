@@ -1,0 +1,68 @@
+.sidebar {
+	&__menu {
+		width: 15rem;
+		display: flex;
+		align-items: center;
+		margin: 15px 0;
+		transition: all 0.5s ease-in-out;
+		cursor: pointer;
+
+		&:hover {
+			color: blue;
+			fill: blue;
+		}
+	}
+
+	&__logo {
+		width: 30px;
+		height: 30px;
+		margin-right: 30px;
+
+		img {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	&__title {
+		width: 55%;
+	}
+
+	&__container {
+		// background: red;
+		padding: 10px;
+		// height: 100vh;
+		// background-color: $background-color;
+	}
+
+	&__header {
+		display: flex;
+		align-items: center;
+
+		&__logo {
+			margin-right: 15px;
+			height: 55px;
+
+			img {
+				height: 100%;
+			}
+		}
+
+		&__title {
+
+			h1,
+			p {
+				color: #fff;
+				font-weight: bold;
+			}
+
+			h1 {
+				font-size: 28px;
+			}
+
+			p {
+				font-size: 19px;
+			}
+		}
+	}
+}

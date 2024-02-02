@@ -1,0 +1,41 @@
+.dashboard {
+  &__container {
+    display: flex;
+    border-radius: 20px;
+    // background: rgb(111, 179, 162);
+    // background: radial-gradient(circle, rgba(111, 179, 162, 1) 0%, rgba(93, 146, 208, 1) 100%);
+  }
+
+  &__template {
+    padding: 20px;
+  }
+
+  &__statuses {
+    display: flex;
+  }
+}
+
+.list {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(229, 221, 221);
+    min-width: 250px;
+    margin: 0 10px;
+    padding: 10px;
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.item {
+  &__container {
+    background-color: white;
+    border-radius: 10px;
+    margin: 5px 0;
+    padding: 10px;
+  }
+}
