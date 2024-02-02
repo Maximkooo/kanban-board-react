@@ -1,6 +1,9 @@
 .dashboard {
   &__container {
     display: flex;
+    border-radius: 20px;
+    // background: rgb(111, 179, 162);
+    // background: radial-gradient(circle, rgba(111, 179, 162, 1) 0%, rgba(93, 146, 208, 1) 100%);
   }
 
   &__template {

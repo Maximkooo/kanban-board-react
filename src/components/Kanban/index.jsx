@@ -1,4 +1,4 @@
-import './kanban.scss'
+import './Kanban.scss'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import Card from '../Card'
 
