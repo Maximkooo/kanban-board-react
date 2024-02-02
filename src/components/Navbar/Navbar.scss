@@ -2,6 +2,16 @@
   padding: 30px 40px;
   display: flex;
   justify-content: space-between;
-  // background-color: #ffffff;
-}
 
+  // background-color: #ffffff;
+  h6 {
+    color: #fff;
+    text-shadow:
+      0 0 2px #eee,
+      0 0 4px #412727,
+      0 -2px 4px #ff3,
+      2px -4px 6px #fd3,
+      -2px -6px 11px #f80,
+      2px -8px 18px #f20;
+  }
+}
