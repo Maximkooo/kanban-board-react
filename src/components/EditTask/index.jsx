@@ -15,6 +15,7 @@ const EditTask = ({ id }) => {
 		priority: 'Low',
 		createdDate: defaultValue,
 		dueDate: '',
+		visible: true,
 	});
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -31,8 +32,7 @@ const EditTask = ({ id }) => {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(mockData[0].tasks);
-    mockData[0].tasks.push(taskForm)
+		mockData[0].tasks.push(taskForm);
 		//clear the edit task state
 		setTaskForm({
 			title: '',
