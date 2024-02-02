@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import './Card.scss'
-import lowPriority from '../../assets/low-priority.png'
-import mediumPriority from '../../assets/medium-priority.png'
-import highPriority from '../../assets/high-priority.png'
+import lowPriority from '../../assets/low-priority.svg'
+import mediumPriority from '../../assets/medium-priority.svg'
+import highPriority from '../../assets/high-priority.svg'
 import { Link } from 'react-router-dom'
 
 const Card = ({ task }) => {
@@ -16,17 +16,12 @@ const Card = ({ task }) => {
   }
 
   useEffect(() => {
-    priorityIconHandler(task.priority)
+    setPriorityIcon(priorityKeys[task.priority])
     if (isEndDateActualHandler(task.dueDate)) {
       setIsEndDateActual(true)
     }
   }, [])
 
-  const priorityIconHandler = (priority) => {
-    if (priority) {
-      setPriorityIcon(priorityKeys[priority])
-    }
-  }
 
   const isEndDateActualHandler = (dueDate) => {
     return dueDate ? new Date(dueDate) - new Date() > 0 : false

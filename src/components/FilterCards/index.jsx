@@ -1,9 +1,24 @@
 import React from 'react'
 
+import { useState } from "react";
+import Select from "react-tailwindcss-select";
+
+const options = [
+  { value: "fox", label: "🦊 Fox" },
+  { value: "Butterfly", label: "🦋 Butterfly" },
+  { value: "Honeybee", label: "🐝 Honeybee" },
+];
 
 const FilterCards = ({ filterHandler }) => {
+
+  const [animal, setAnimal] = useState(null);
+
+  const handleChange = value => {
+    console.log("value:", value);
+    setAnimal(value);
+  };
   return (
-    <>
+    <div className='flex'>
       <div className="mb-3 w-44">
         <input
           onChange={filterHandler}
@@ -12,7 +27,17 @@ const FilterCards = ({ filterHandler }) => {
           id="exampleSearch"
           placeholder="Type query" />
       </div>
-    </>
+      <div className='w-64 ml-5 '>
+        <Select
+          value={animal}
+          onChange={handleChange}
+          options={options}
+          isMultiple={true}
+          primaryColor='blue'
+          placeholder='Prioritize'
+        />
+      </div>
+    </div>
   );
 }
 
