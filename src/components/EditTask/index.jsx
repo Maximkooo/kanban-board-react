@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PRIORITY, TASKS } from '../../common/constants';
+import { PRIORITY } from '../../common/constants';
 import { v4 as uuidv4 } from 'uuid';
 import mockData from '../../mockData';
 const EditTask = ({ id }) => {

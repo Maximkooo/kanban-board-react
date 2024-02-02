@@ -2,21 +2,11 @@ import React from 'react'
 
 import { useState } from "react";
 import Select from "react-tailwindcss-select";
+import { PRIORITY } from '../../common/constants';
 
-const options = [
-  { value: "fox", label: "🦊 Fox" },
-  { value: "Butterfly", label: "🦋 Butterfly" },
-  { value: "Honeybee", label: "🐝 Honeybee" },
-];
 
-const FilterCards = ({ filterHandler }) => {
+const FilterCards = ({ filterHandler, filterPriorityHandler, priorityData }) => {
 
-  const [animal, setAnimal] = useState(null);
-
-  const handleChange = value => {
-    console.log("value:", value);
-    setAnimal(value);
-  };
   return (
     <div className='flex'>
       <div className="mb-3 w-44">
@@ -29,12 +19,12 @@ const FilterCards = ({ filterHandler }) => {
       </div>
       <div className='w-64 ml-5 '>
         <Select
-          value={animal}
-          onChange={handleChange}
-          options={options}
+          value={priorityData}
+          onChange={filterPriorityHandler}
+          options={PRIORITY}
           isMultiple={true}
           primaryColor='blue'
-          placeholder='Prioritize'
+          placeholder='Priority'
         />
       </div>
     </div>

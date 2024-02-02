@@ -1,5 +1,5 @@
 import './Dashboard.scss'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar'
 import Kanban from '../Kanban'
 import FilterCards from '../FilterCards'
@@ -7,21 +7,30 @@ import mockData from '../../mockData'
 
 const Dashboard = () => {
   const [data, setData] = useState(JSON.parse(JSON.stringify(mockData)))
+  const [filteredPriorityData, setFilteredPriorityData] = useState(null)
+  const [filteredStringData, setFilteredStringData] = useState('')
+
 
   const filterHandler = (e) => {
-    const filteredData = data.map(type => {
-      return {
-        ...type,
-        tasks: type.tasks.map(task => {
-          return {
-            ...task,
-            visible: task.title.toLowerCase().includes(e.target.value.toLowerCase())
-          }
-        })
-      }
-    })
-    setData(filteredData)
-  }
+    setFilteredStringData(e.target.value)
+  };
+
+  const filterPriorityHandler = (priorities) => {
+    setFilteredPriorityData(priorities || null);
+  };
+
+  useEffect(() => {
+    const filterPriority = filteredPriorityData ? filteredPriorityData.map(el => el.value) : null;
+    const filteredData = data.map(type => ({
+      ...type,
+      tasks: type.tasks.map(task => ({
+        ...task,
+        visible: (!filterPriority || filterPriority.includes(task.priority)) && task.title.toLowerCase().includes(filteredStringData)
+      }))
+    }));
+    setData(filteredData);
+  }, [filteredPriorityData, filteredStringData])
+
 
   const onDragEnd = result => {
     if (!result.destination) return
@@ -52,7 +61,7 @@ const Dashboard = () => {
       <Sidebar />
       <div className='dashboard__template'>
         <div className='pb-5'>
-          <FilterCards filterHandler={filterHandler} />
+          <FilterCards filterHandler={filterHandler} priorityData={filteredPriorityData} filterPriorityHandler={filterPriorityHandler} />
         </div>
         <div className='dashboard__statuses'>
           <Kanban data={data} onDragEnd={onDragEnd} />
