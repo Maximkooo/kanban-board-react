@@ -2,6 +2,10 @@
 import React from 'react';
 
 const Footer = () => {
-	return <div>Footer</div>;
+	return (
+		<>
+			<h5 className='text-3xl font-bold text-center text-white'> BY DEVELOPERS WITH 💜</h5>
+		</>
+	)
 };
 export default Footer;
