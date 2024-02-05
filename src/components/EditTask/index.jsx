@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { PRIORITY } from '../../common/constants';
 import { v4 as uuidv4 } from 'uuid';
 import mockData from '../../mockData';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const EditTask = ({ id }) => {
 	const someDate = new Date();
 	const date = someDate.setDate(someDate.getDate());
 	const defaultValue = new Date(date).toISOString().split('T')[0];
 
+	const navigate = useNavigate();
 	const [taskForm, setTaskForm] = useState({
 		id: uuidv4(),
 		title: '',
@@ -34,6 +37,7 @@ const EditTask = ({ id }) => {
 		e.preventDefault();
 		mockData[0].tasks.push(taskForm);
 		//clear the edit task state
+		navigate('/');
 		setTaskForm({
 			title: '',
 			description: '',
