@@ -8,18 +8,19 @@ const EditTask = ({}) => {
 	const date = someDate.setDate(someDate.getDate());
 	const defaultValue = new Date(date).toISOString().split('T')[0];
 	const { id: titleID } = useParams();
-	console.log(titleID);
 	const [test, setTest] = useState(null);
+
 	useEffect(() => {
 		if (titleID) {
-			console.log(`we are in!!!!!`);
-			setTest(
-				mockData
-					.map((category) =>
-						category.tasks.filter((task) => task.title === titleID)
-					)
-					.filter((categoryID) => categoryID.length)
-			);
+			const getTask = mockData
+				.map((category) =>
+					category.tasks.find((task) => task.title === titleID)
+				)
+				.filter((arrayEl) => arrayEl);
+			if (getTask.length) {
+				setTest(getTask[0]);
+			}
+		
 		}
 	}, [titleID]);
 	console.log(test);
