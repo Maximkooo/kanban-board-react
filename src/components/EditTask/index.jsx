@@ -50,127 +50,123 @@ const EditTask = ({ id }) => {
 	return (
 		<div className=" container">
 			<form className="w-full max-w-lg mx-auto" onSubmit={handleSubmit}>
-				<div className="flex flex-col flex-wrap -mx-3 mb-6">
-					<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-						<label
-							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							htmlFor="grid-first-name"
-						>
-							Title
-						</label>
-						<input
-							onChange={handleChange}
-							className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-							id="grid-first-name"
-							name="title"
-							type="text"
-						/>
-					</div>
-					<div className="w-full md:w-1/2 px-3">
-						<label
-							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							htmlFor="grid-last-name"
-						>
-							Description
-						</label>
-						<textarea
-							onChange={handleChange}
-							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-							id="grid-last-name"
-							type="text"
-							name="description"
-						/>
-					</div>
+				<div class="mb-6">
+					<label
+						for="large-input"
+						class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+					>
+						Title
+					</label>
+					<input
+						onChange={handleChange}
+						type="text"
+						name="title"
+						id="large-input"
+						className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					/>
 				</div>
-				<div className="flex flex-wrap -mx-3 mb-6  bebra">
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-						<label
-							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							htmlFor="grid-state"
-						>
-							Priority
-						</label>
-						<div className="relative">
-							<select
-								onChange={(e) => priorityHandler(e.target.value)}
-								className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-								id="grid-state"
+				<div class="mb-6">
+					<label
+						for="default-input"
+						class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+					>
+						Description
+					</label>
+					<textarea
+						name="description"
+						onChange={handleChange}
+						type="text"
+						id="large-input"
+						class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					/>
+				</div>
+				<div className="mb-6">
+					<label
+						for="small-input"
+						class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+					>
+						Assignee
+					</label>
+					<input
+						name="assignee"
+						onChange={handleChange}
+						type="text"
+						id="small-input"
+						className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					/>
+				</div>
+				<div className="mb-6 relative">
+					<label
+						className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+						htmlFor="grid-state"
+					>
+						Priority
+					</label>
+					<select
+						onChange={(e) => priorityHandler(e.target.value)}
+						className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+						id="grid-state"
+					>
+						{PRIORITY.map((prior, idx) => (
+							<option
+								// onClick={(el) => priorityHandler(el.target.value)}
+								key={idx}
 							>
-								{PRIORITY.map((prior, idx) => (
-									<option
-										// onClick={(el) => priorityHandler(el.target.value)}
-										key={idx}
-									>
-										{prior.value}
-									</option>
-								))}
-							</select>
-							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-								<svg
-									className="fill-current h-4 w-4"
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 20 20"
-								>
-									<path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-								</svg>
-							</div>
-						</div>
+								{prior.value}
+							</option>
+						))}
+					</select>
+					<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+						<svg
+							className="fill-current h-4 w-4"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 20 20"
+						>
+							<path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+						</svg>
 					</div>
 				</div>
-				<div className="flex flex-wrap -mx-3 mb-2 bebra">
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+				<div className="mb-6 flex justify-between">
+					<div>
 						<label
-							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 							htmlFor="grid-city"
 						>
 							Create Date
 						</label>
 						<input
 							onChange={handleChange}
-							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+							className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							id="grid-city"
 							type="date"
 							defaultValue={defaultValue}
 							disabled
 						/>
 					</div>
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+					<div>
 						<label
-							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 							htmlFor="grid-zip"
 						>
 							Due Date
 						</label>
 						<input
 							onChange={handleChange}
-							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+							className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							id="grid-zip"
 							type="date"
 							name="dueDate"
 						/>
 					</div>
-					<div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-						<label
-							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							htmlFor="grid-zip"
-						>
-							Assignee
-						</label>
-						<input
-							onChange={handleChange}
-							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-							id="grid-zip"
-							type="text"
-							name="assignee"
-						/>
-					</div>
 				</div>
-				<button
-					type="submit"
-					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-				>
-					Submit
-				</button>
+				<div className="mb-6 flex justify-center">
+					<button
+						type="submit"
+						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+					>
+						Submit
+					</button>
+				</div>
 			</form>
 		</div>
 	);
