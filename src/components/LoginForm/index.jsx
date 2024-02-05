@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   Card,
   Input,
@@ -6,10 +6,11 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-
+import { useNavigate } from 'react-router-dom';
 import { isEmpty, isEmail, isStrongPassword } from 'validator';
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: { value: '', valid: false },
     email: { value: '', valid: false },
@@ -30,7 +31,6 @@ const LoginForm = () => {
         break;
     }
     requiredInputHandler(e.target.name, e.target.value, isValid)
-    console.log(form);
   }
 
   const requiredInputHandler = (key, value, valid) => {
@@ -45,6 +45,10 @@ const LoginForm = () => {
 
     const isEveryValid = Object.keys(form).map(key => form[key].valid).every(el => el)
     console.log(isEveryValid);
+    if (isEveryValid) {
+      navigate('/')
+    }
+
   }
 
 
