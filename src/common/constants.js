@@ -6,7 +6,7 @@ const PRIORITY = [
 	{ value: "High", label: "🔴 High" },
 ];
 
-const FELL_ALL_FIELDS = 'Please fill in all the fields and make up a complex password*'
+const FELL_ALL_FIELDS_ERROR = 'Please fill in all the fields and make up a complex password*'
 
 const USERS = [
 	{
@@ -23,4 +23,4 @@ const USERS = [
 	}
 ]
 
-export { PRIORITY, FELL_ALL_FIELDS, USERS };
+export { PRIORITY, FELL_ALL_FIELDS_ERROR, USERS };
