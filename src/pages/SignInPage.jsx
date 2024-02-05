@@ -7,62 +7,36 @@ import {
 } from "@material-tailwind/react";
 
 import { Link, useNavigate } from 'react-router-dom';
-import { isEmpty, isEmail, isStrongPassword } from 'validator';
-import { USERS, FELL_ALL_FIELDS_ERROR } from '../common/constants';
-import { v4 as uuidv4 } from 'uuid'
+import { USERS, INCORRECTLY_DATA } from '../common/constants';
+
 
 const SignInPage = () => {
   const navigate = useNavigate();
   const [isErrorMessage, setIsErrorMessage] = useState(false)
   const [form, setForm] = useState({
-    name: { value: '', valid: false },
-    email: { value: '', valid: false },
-    password: { value: '', valid: false },
+    email: '',
+    password: ''
   })
 
   const inputHandler = (e) => {
-    let isValid = false
-    switch (e.target.name) {
-      case 'name':
-        isValid = !isEmpty(e.target.value)
-        break;
-      case 'email':
-        isValid = isEmail(e.target.value)
-        break;
-      case 'password':
-        isValid = isStrongPassword(e.target.value)
-        break;
-    }
-    requiredInputHandler(e.target.name, e.target.value, isValid)
-  }
-
-  const requiredInputHandler = (key, value, valid) => {
     setForm(prev => ({
       ...prev,
-      [key]: { value, valid }
+      [e.target.name]: e.target.value
     }))
   }
 
+
   const submitForm = (e) => {
     e.preventDefault()
-    const isEveryValid = Object.keys(form).map(key => form[key].valid).every(el => el)
-
-    if (isEveryValid) {
-      setIsErrorMessage(false);
-      USERS.push({
-        id: uuidv4(),
-        name: form.name.value,
-        email: form.email.value,
-        password: form.password.value,
-      })
+    const isAccessGranted = !!USERS.filter(user => user.email === form.email && user.password === form.password).length
+    if (isAccessGranted) {
+      setIsErrorMessage(false)
       setForm({
-        name: { value: '', valid: false },
-        email: { value: '', valid: false },
-        password: { value: '', valid: false },
+        email: '',
+        password: ''
       })
-      navigate('/sign-in')
-    }
-    else {
+      navigate('/dashboard')
+    } else {
       setIsErrorMessage(true)
     }
   }
@@ -80,7 +54,7 @@ const SignInPage = () => {
           </Typography>
           <Input
             name="email"
-            value={form.email.value}
+            value={form.email}
             size="lg"
             placeholder="name@mail.com"
             className=" border-black focus:!border-t-gray-900 placeholder-gray-700"
@@ -93,7 +67,7 @@ const SignInPage = () => {
             Password
           </Typography>
           <Input
-            value={form.password.value}
+            value={form.password}
             name="password"
             type="password"
             size="lg"
@@ -105,7 +79,7 @@ const SignInPage = () => {
             onChange={(e) => inputHandler(e)}
           />
         </div>
-        {isErrorMessage && <p className=' text-red-600'>{FELL_ALL_FIELDS_ERROR}</p>}
+        {isErrorMessage && <p className=' text-red-600'>{INCORRECTLY_DATA}</p>}
         <Button className="mt-6 text-lg" type="submit" fullWidth>
           sign in
         </Button>

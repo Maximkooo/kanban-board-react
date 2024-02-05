@@ -7,6 +7,7 @@ const PRIORITY = [
 ];
 
 const FELL_ALL_FIELDS_ERROR = 'Please fill in all the fields and make up a complex password*'
+const INCORRECTLY_DATA = 'Incorrectly entered data*'
 
 const USERS = [
 	{
@@ -23,4 +24,4 @@ const USERS = [
 	}
 ]
 
-export { PRIORITY, FELL_ALL_FIELDS_ERROR, USERS };
+export { PRIORITY, FELL_ALL_FIELDS_ERROR, USERS, INCORRECTLY_DATA };
