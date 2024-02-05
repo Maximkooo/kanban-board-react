@@ -11,7 +11,7 @@ import { isEmpty, isEmail, isStrongPassword } from 'validator';
 import { USERS, FELL_ALL_FIELDS } from '../../common/constants';
 import { v4 as uuidv4 } from 'uuid'
 
-const LoginForm = () => {
+const SignUpForm = () => {
   const navigate = useNavigate();
   const [isErrorMessage, setIsErrorMessage] = useState(false)
   const [form, setForm] = useState({
@@ -139,4 +139,4 @@ const LoginForm = () => {
   );
 }
 
-export default LoginForm
+export default SignUpForm
