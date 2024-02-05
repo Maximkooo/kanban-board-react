@@ -30,6 +30,7 @@ const SignInPage = () => {
     e.preventDefault()
     const isAccessGranted = !!USERS.filter(user => user.email === form.email && user.password === form.password).length
     if (isAccessGranted) {
+      window.sessionStorage.setItem("access", true);
       setIsErrorMessage(false)
       setForm({
         email: '',
