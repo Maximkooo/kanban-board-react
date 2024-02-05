@@ -29,7 +29,7 @@ const Card = ({ task }) => {
 
 
   return (
-    <Link to={`/update-task/${task.id}`}>
+    <Link to={`/update-task/${task.title}`}>
       <div className='card'>
         <h5 className='grid-cols-12 mb-2 font-bold'>{task.title}</h5>
         <p className='grid-cols-12'>{task.description}</p>
