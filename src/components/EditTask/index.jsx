@@ -1,12 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PRIORITY } from '../../common/constants';
 import { v4 as uuidv4 } from 'uuid';
 import mockData from '../../mockData';
-import { useNavigate } from 'react-router-dom';
-const EditTask = ({ id }) => {
+import { useNavigate, useParams } from 'react-router-dom';
+const EditTask = ({}) => {
 	const someDate = new Date();
 	const date = someDate.setDate(someDate.getDate());
 	const defaultValue = new Date(date).toISOString().split('T')[0];
+	const { id: titleID } = useParams();
+	console.log(titleID);
+	const [test, setTest] = useState(null);
+	useEffect(() => {
+		if (titleID) {
+			console.log(`we are in!!!!!`);
+			setTest(
+				mockData
+					.map((category) =>
+						category.tasks.filter((task) => task.title === titleID)
+					)
+					.filter((categoryID) => categoryID.length)
+			);
+		}
+	}, [titleID]);
+	console.log(test);
+	console.log(`thi is title id =>>`, titleID);
 
 	const navigate = useNavigate();
 	const [taskForm, setTaskForm] = useState({
@@ -50,10 +67,10 @@ const EditTask = ({ id }) => {
 	return (
 		<div className=" container">
 			<form className="w-full max-w-lg mx-auto" onSubmit={handleSubmit}>
-				<div class="mb-6">
+				<div className="mb-6">
 					<label
-						for="large-input"
-						class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+						htmlFor="large-input"
+						className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 					>
 						Title
 					</label>
@@ -65,10 +82,10 @@ const EditTask = ({ id }) => {
 						className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 					/>
 				</div>
-				<div class="mb-6">
+				<div className="mb-6">
 					<label
-						for="default-input"
-						class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+						htmlFor="default-input"
+						className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 					>
 						Description
 					</label>
@@ -77,13 +94,13 @@ const EditTask = ({ id }) => {
 						onChange={handleChange}
 						type="text"
 						id="large-input"
-						class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+						className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 					/>
 				</div>
 				<div className="mb-6">
 					<label
-						for="small-input"
-						class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+						htmlFor="small-input"
+						className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 					>
 						Assignee
 					</label>
@@ -129,7 +146,7 @@ const EditTask = ({ id }) => {
 				<div className="mb-6 flex justify-between">
 					<div>
 						<label
-							class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+							className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 							htmlFor="grid-city"
 						>
 							Create Date
@@ -145,7 +162,7 @@ const EditTask = ({ id }) => {
 					</div>
 					<div>
 						<label
-							class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+							className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 							htmlFor="grid-zip"
 						>
 							Due Date

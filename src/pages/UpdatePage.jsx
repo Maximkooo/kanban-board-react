@@ -1,14 +1,14 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import EditTask from '../components/EditTask'
 
 const UpdatePage = () => {
-  const { id } = useParams()
 
   return (
     <div>
       UpdatePage
       <br />
-      {id}
+    <EditTask/>
     </div>
   )
 }
