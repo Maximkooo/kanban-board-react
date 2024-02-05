@@ -17,7 +17,7 @@ const FilterCards = ({ filterHandler, filterPriorityHandler, priorityData }) => 
           id="exampleSearch"
           placeholder="Type query" />
       </div>
-      <div className='w-64 ml-5 test'>
+      <div className='w-64 ml-5 filter__select'>
         <Select
           value={priorityData}
           onChange={filterPriorityHandler}

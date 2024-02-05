@@ -11,8 +11,8 @@ import OverallTasks from './pages/OverallTasks';
 import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import UpdatePage from './pages/UpdatePage';
+import SignUpPage from './pages/SignUpPage';
 
-// import Sidebar from './components/Sidebar'
 
 function App() {
 	return (
@@ -20,6 +20,7 @@ function App() {
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+				<Route path="/sign-up" element={<SignUpPage />} />
 				<Route path="/task-create" element={<CreateTask />} />
 				<Route path="/task-pending" element={<PendingTask />} />
 				<Route path="/task-inprogress" element={<InProgressTask />} />

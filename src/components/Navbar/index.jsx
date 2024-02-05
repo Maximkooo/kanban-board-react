@@ -11,7 +11,9 @@ const Navbar = () => {
 				<img src={logo} className="inline-block mt-2" alt="IronSpace" />
 				<img src={reactLogo} className="inline-block ml-1" alt="React" />
 			</Link>
-			<h6 className="font-bold text-3xl">Kanban Board</h6>
+			<Link to="/sign-up">
+				<h6 className="font-bold text-3xl">Kanban Board</h6>
+			</Link>
 		</div>
 	);
 };
