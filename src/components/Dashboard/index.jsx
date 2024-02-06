@@ -6,7 +6,7 @@ import FilterCards from '../FilterCards'
 import mockData from '../../mockData'
 
 const Dashboard = () => {
-  const [data, setData] = useState(JSON.parse(JSON.stringify(mockData)))
+  const [data, setData] = useState(mockData)
   const [filteredPriorityData, setFilteredPriorityData] = useState(null)
   const [filteredStringData, setFilteredStringData] = useState('')
 
@@ -58,7 +58,12 @@ const Dashboard = () => {
 
 
   const deleteTaskHandler = (id) => {
-    console.log(id);
+    setData(
+      data.map(category => ({
+        ...category,
+        tasks: category.tasks.filter(task => task.id !== id)
+      }))
+    )
   }
 
   return (
