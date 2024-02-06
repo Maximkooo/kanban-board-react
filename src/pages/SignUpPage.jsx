@@ -11,8 +11,6 @@ import { isEmpty, isEmail, isStrongPassword } from 'validator';
 import { USERS, FELL_ALL_FIELDS_ERROR } from '../common/constants';
 import { v4 as uuidv4 } from 'uuid'
 
-window.sessionStorage.setItem("access", false);
-
 const SignUpPage = () => {
   const navigate = useNavigate();
   const [isErrorMessage, setIsErrorMessage] = useState(false)
@@ -21,6 +19,8 @@ const SignUpPage = () => {
     email: { value: '', valid: false },
     password: { value: '', valid: false },
   })
+
+  window.sessionStorage.setItem("access", false);
 
   const inputHandler = (e) => {
     let isValid = false
