@@ -33,7 +33,7 @@ const Card = ({ task, deleteTaskHandler }) => {
         className='absolute right-5 top-5 text-red-600'>
         X
       </button>
-      <Link to={`/update-task/${task.title}`} className=''>
+      <Link to={`/update-task/${task.id}`} className=''>
         <div className='card '>
           <h5 className='grid-cols-12 mb-2 font-bold'>{task.title}</h5>
           <p className='grid-cols-12'>{task.description}</p>

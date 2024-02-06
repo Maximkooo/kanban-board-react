@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { PRIORITY } from '../../common/constants';
-import { v4 as uuidv4 } from 'uuid';
 import mockData from '../../mockData';
 import { useNavigate, useParams } from 'react-router-dom';
 const EditTask = ({}) => {
@@ -8,10 +7,10 @@ const EditTask = ({}) => {
 	const date = someDate.setDate(someDate.getDate());
 	const defaultValue = new Date(date).toISOString().split('T')[0];
 
-	const { id: titleID } = useParams();
+	const { id } = useParams();
 	const navigate = useNavigate();
 	const [taskForm, setTaskForm] = useState({
-		id: uuidv4(),
+		id: String(Math.floor(Math.random() * 1000 + 1)),
 		title: '',
 		description: '',
 		assignee: '',
@@ -22,18 +21,18 @@ const EditTask = ({}) => {
 	});
 	const updateTask = () => {
 		const getTask = mockData
-			.map((category) => category.tasks.find((task) => task.title === titleID))
+			.map((category) => category.tasks.find((task) => task.id === id))
 			.filter((arrayEl) => arrayEl);
 		if (getTask.length) {
 			setTaskForm(getTask[0]);
 		}
 	};
 	useEffect(() => {
-		if (titleID) {
+		if (id) {
 			updateTask();
 		}
-	}, [titleID]);
-	console.log(taskForm);
+	}, [id]);
+	// console.log(taskForm);
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setTaskForm((prevTaskForm) => ({
@@ -50,10 +49,23 @@ const EditTask = ({}) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		//check on existing task to update
-		mockData[0].tasks.push(taskForm);
+		if (id) {
+			setTaskForm((prevState) => ({ ...prevState, id }));
+			mockData.map((category) => ({
+				...category,
+				tasks: category.tasks.map((task) => {
+					if (id === task.id) {
+						return {};
+					}
+					return task;
+				}),
+			}));
+		} else {
+			mockData[0].tasks.push(taskForm);
+		}
 		//clear the edit task state
 		console.log(taskForm);
-		navigate('/');
+		// navigate('/dashboard');
 		setTaskForm({
 			title: '',
 			description: '',
