@@ -1,12 +1,11 @@
-import { v4 as uuidv4 } from 'uuid'
 
 const mockData = [
   {
-    id: uuidv4(),
+    id: '1',
     title: ' 📃 To do',
     tasks: [
       {
-        id: uuidv4(),
+        id: '101',
         "title": "Design Landing Page",
         "description": "Create a visually appealing landing page for the website.",
         "assignee": "Mary Davis",
@@ -16,7 +15,7 @@ const mockData = [
         "visible": true
       },
       {
-        id: uuidv4(),
+        id: '102',
         "title": "Develop User Registration",
         "description": "Implement user registration functionality with email verification.",
         "assignee": "Jane Smith",
@@ -29,11 +28,11 @@ const mockData = [
     ]
   },
   {
-    id: uuidv4(),
+    id: '2',
     title: ' ✏️ In progress',
     tasks: [
       {
-        id: uuidv4(),
+        id: '201',
         "title": "Release Version 1.0",
         "description": "Prepare for the release of the first version of the application.",
         "assignee": "Sarah Brown",
@@ -45,11 +44,11 @@ const mockData = [
     ]
   },
   {
-    id: uuidv4(),
+    id: '3',
     title: ' ⭕ Review',
     tasks: [
       {
-        "id": uuidv4(),
+        "id": '301',
         "title": "Update Documentation",
         "description": "Update user documentation with the latest features and changes.",
         "assignee": "David Wilson",
@@ -61,11 +60,11 @@ const mockData = [
     ]
   },
   {
-    id: uuidv4(),
+    id: '4',
     title: ' 👍 Completed',
     tasks: [
       {
-        id: uuidv4(),
+        id: '401',
         "title": "Bug Fix: Login Issue",
         "description": "Investigate and fix the login problem reported by users.",
         "assignee": "Mark Johnson",
