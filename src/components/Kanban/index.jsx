@@ -3,7 +3,7 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import Card from '../Card'
 
 
-const Kanban = ({ data, onDragEnd }) => {
+const Kanban = ({ data, onDragEnd, deleteTaskHandler }) => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -42,8 +42,7 @@ const Kanban = ({ data, onDragEnd }) => {
                                 opacity: snapshot.isDragging ? '0.5' : '1'
                               }}
                             >
-                              <Card task={task} />
-                              {/* status={section.title} */}
+                              <Card task={task} deleteTaskHandler={deleteTaskHandler} />
                             </div>
                           )}
                         </Draggable>

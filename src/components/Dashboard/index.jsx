@@ -56,6 +56,11 @@ const Dashboard = () => {
     }
   }
 
+
+  const deleteTaskHandler = (id) => {
+    console.log(id);
+  }
+
   return (
     <div className='dashboard__container'>
       <Sidebar />
@@ -64,7 +69,7 @@ const Dashboard = () => {
           <FilterCards filterHandler={filterHandler} priorityData={filteredPriorityData} filterPriorityHandler={filterPriorityHandler} />
         </div>
         <div className='dashboard__statuses'>
-          <Kanban data={data} onDragEnd={onDragEnd} />
+          <Kanban data={data} onDragEnd={onDragEnd} deleteTaskHandler={deleteTaskHandler} />
         </div>
       </div>
     </div>
