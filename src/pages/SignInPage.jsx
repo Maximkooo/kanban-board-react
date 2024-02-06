@@ -58,7 +58,7 @@ const SignInPage = () => {
             value={form.email}
             size="lg"
             placeholder="name@mail.com"
-            className=" border-black focus:!border-t-gray-900 placeholder-gray-700  h-10"
+            className=" border-black focus:!border-t-gray-900 placeholder-gray-700  height__input"
             labelProps={{
               className: "before:content-none after:content-none"
             }}
@@ -73,7 +73,7 @@ const SignInPage = () => {
             type="password"
             size="lg"
             placeholder="********"
-            className=" border-black focus:!border-t-gray-900 placeholder-gray-700 h-10"
+            className=" border-black focus:!border-t-gray-900 placeholder-gray-700 height__input"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
