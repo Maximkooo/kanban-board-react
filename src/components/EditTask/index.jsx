@@ -20,17 +20,17 @@ const EditTask = ({}) => {
 		dueDate: '',
 		visible: true,
 	});
-
+	const updateTask = () => {
+		const getTask = mockData
+			.map((category) => category.tasks.find((task) => task.title === titleID))
+			.filter((arrayEl) => arrayEl);
+		if (getTask.length) {
+			setTaskForm(getTask[0]);
+		}
+	};
 	useEffect(() => {
 		if (titleID) {
-			const getTask = mockData
-				.map((category) =>
-					category.tasks.find((task) => task.title === titleID)
-				)
-				.filter((arrayEl) => arrayEl);
-			if (getTask.length) {
-				setTaskForm(getTask[0]);
-			}
+			updateTask();
 		}
 	}, [titleID]);
 	console.log(taskForm);
@@ -49,8 +49,10 @@ const EditTask = ({}) => {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		//check on existing task to update
 		mockData[0].tasks.push(taskForm);
 		//clear the edit task state
+		console.log(taskForm);
 		navigate('/');
 		setTaskForm({
 			title: '',
