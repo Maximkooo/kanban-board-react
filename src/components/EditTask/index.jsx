@@ -7,24 +7,8 @@ const EditTask = ({}) => {
 	const someDate = new Date();
 	const date = someDate.setDate(someDate.getDate());
 	const defaultValue = new Date(date).toISOString().split('T')[0];
-	const { id: titleID } = useParams();
-	console.log(titleID);
-	const [test, setTest] = useState(null);
-	useEffect(() => {
-		if (titleID) {
-			console.log(`we are in!!!!!`);
-			setTest(
-				mockData
-					.map((category) =>
-						category.tasks.filter((task) => task.title === titleID)
-					)
-					.filter((categoryID) => categoryID.length)
-			);
-		}
-	}, [titleID]);
-	console.log(test);
-	console.log(`thi is title id =>>`, titleID);
 
+	const { id: titleID } = useParams();
 	const navigate = useNavigate();
 	const [taskForm, setTaskForm] = useState({
 		id: uuidv4(),
@@ -36,6 +20,20 @@ const EditTask = ({}) => {
 		dueDate: '',
 		visible: true,
 	});
+
+	useEffect(() => {
+		if (titleID) {
+			const getTask = mockData
+				.map((category) =>
+					category.tasks.find((task) => task.title === titleID)
+				)
+				.filter((arrayEl) => arrayEl);
+			if (getTask.length) {
+				setTaskForm(getTask[0]);
+			}
+		}
+	}, [titleID]);
+	console.log(taskForm);
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setTaskForm((prevTaskForm) => ({
@@ -75,6 +73,7 @@ const EditTask = ({}) => {
 						Title
 					</label>
 					<input
+						value={taskForm.title}
 						onChange={handleChange}
 						type="text"
 						name="title"
@@ -90,6 +89,7 @@ const EditTask = ({}) => {
 						Description
 					</label>
 					<textarea
+						value={taskForm.description}
 						name="description"
 						onChange={handleChange}
 						type="text"
@@ -105,6 +105,7 @@ const EditTask = ({}) => {
 						Assignee
 					</label>
 					<input
+						value={taskForm.assignee}
 						name="assignee"
 						onChange={handleChange}
 						type="text"
@@ -120,6 +121,7 @@ const EditTask = ({}) => {
 						Priority
 					</label>
 					<select
+						value={taskForm.priority}
 						onChange={(e) => priorityHandler(e.target.value)}
 						className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 						id="grid-state"
@@ -152,11 +154,11 @@ const EditTask = ({}) => {
 							Create Date
 						</label>
 						<input
+							value={taskForm.createdDate}
 							onChange={handleChange}
 							className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							id="grid-city"
 							type="date"
-							defaultValue={defaultValue}
 							disabled
 						/>
 					</div>
@@ -168,6 +170,7 @@ const EditTask = ({}) => {
 							Due Date
 						</label>
 						<input
+							value={taskForm.dueDate}
 							onChange={handleChange}
 							className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							id="grid-zip"
