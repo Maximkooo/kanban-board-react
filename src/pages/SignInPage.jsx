@@ -58,9 +58,9 @@ const SignInPage = () => {
             value={form.email}
             size="lg"
             placeholder="name@mail.com"
-            className=" border-black focus:!border-t-gray-900 placeholder-gray-700"
+            className=" border-black focus:!border-t-gray-900 placeholder-gray-700  h-10"
             labelProps={{
-              className: "before:content-none after:content-none",
+              className: "before:content-none after:content-none"
             }}
             onChange={(e) => inputHandler(e)}
           />
@@ -73,7 +73,7 @@ const SignInPage = () => {
             type="password"
             size="lg"
             placeholder="********"
-            className=" border-black focus:!border-t-gray-900 placeholder-gray-700"
+            className=" border-black focus:!border-t-gray-900 placeholder-gray-700 h-10"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
@@ -86,7 +86,7 @@ const SignInPage = () => {
         </Button>
         <Typography color="gray" className="mt-4 text-center font-normal">
           No account yet?{" "}
-          <Link to='/sign-up'>
+          <Link to='/'>
             <span className="font-medium text-blue-900 cursor-pointer underline">
               Sign Up
             </span>

@@ -88,7 +88,7 @@ const SignUpPage = () => {
             value={form.name.value}
             size="lg"
             placeholder="Enter your name"
-            className=" border-black focus:!border-t-gray-900 placeholder-gray-700"
+            className=" border-black focus:!border-t-gray-900 placeholder-gray-700 h-10"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
@@ -102,7 +102,7 @@ const SignUpPage = () => {
             value={form.email.value}
             size="lg"
             placeholder="name@mail.com"
-            className=" border-black focus:!border-t-gray-900 placeholder-gray-700"
+            className=" border-black focus:!border-t-gray-900 placeholder-gray-700 h-10"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
@@ -117,7 +117,7 @@ const SignUpPage = () => {
             type="password"
             size="lg"
             placeholder="********"
-            className=" border-black focus:!border-t-gray-900 placeholder-gray-700"
+            className=" border-black focus:!border-t-gray-900 placeholder-gray-700 h-10"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
