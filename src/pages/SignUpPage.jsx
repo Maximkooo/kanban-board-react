@@ -7,17 +7,17 @@ import {
 } from "@material-tailwind/react";
 
 import { Link, useNavigate } from 'react-router-dom';
-import { isEmpty, isEmail, isStrongPassword } from 'validator';
-import { USERS, FELL_ALL_FIELDS_ERROR } from '../common/constants';
+import { isEmail, isStrongPassword, isAlpha } from 'validator';
+import { USERS } from '../common/constants';
 import { v4 as uuidv4 } from 'uuid'
 
 const SignUpPage = () => {
   const navigate = useNavigate();
-  const [isErrorMessage, setIsErrorMessage] = useState(false)
+  const [isErrorMessage, setIsErrorMessage] = useState('')
   const [form, setForm] = useState({
-    name: { value: '', valid: false },
-    email: { value: '', valid: false },
-    password: { value: '', valid: false },
+    name: { value: '', valid: false, error: 'Name must contain only letters*' },
+    email: { value: '', valid: false, error: 'Incorrect email' },
+    password: { value: '', valid: false, error: 'Make up a complex password*' },
   })
 
   window.sessionStorage.setItem("access", false);
@@ -26,7 +26,7 @@ const SignUpPage = () => {
     let isValid = false
     switch (e.target.name) {
       case 'name':
-        isValid = !isEmpty(e.target.value)
+        isValid = isAlpha(e.target.value)
         break;
       case 'email':
         isValid = isEmail(e.target.value)
@@ -35,13 +35,14 @@ const SignUpPage = () => {
         isValid = isStrongPassword(e.target.value)
         break;
     }
-    requiredInputHandler(e.target.name, e.target.value, isValid)
+    // console.log(isValid);
+    requiredInputHandler(e.target.name, e.target.value, isValid, form[e.target.name].error)
   }
 
-  const requiredInputHandler = (key, value, valid) => {
+  const requiredInputHandler = (key, value, valid, error) => {
     setForm(prev => ({
       ...prev,
-      [key]: { value, valid }
+      [key]: { value, valid, error }
     }))
   }
 
@@ -50,22 +51,16 @@ const SignUpPage = () => {
     const isEveryValid = Object.keys(form).map(key => form[key].valid).every(el => el)
 
     if (isEveryValid) {
-      setIsErrorMessage(false);
       USERS.push({
         id: uuidv4(),
         name: form.name.value,
         email: form.email.value,
         password: form.password.value,
       })
-      setForm({
-        name: { value: '', valid: false },
-        email: { value: '', valid: false },
-        password: { value: '', valid: false },
-      })
       navigate('/sign-in')
     }
     else {
-      setIsErrorMessage(true)
+      setIsErrorMessage(Object.keys(form).map(key => form[key]).find(el => !el.valid).error)
     }
   }
 
@@ -124,7 +119,7 @@ const SignUpPage = () => {
             onChange={(e) => inputHandler(e)}
           />
         </div>
-        {isErrorMessage && <p className=' text-red-600'>{FELL_ALL_FIELDS_ERROR}</p>}
+        {isErrorMessage && <p className=' text-red-600'>{isErrorMessage}</p>}
         <Button className="mt-6 text-lg" type="submit" fullWidth>
           sign up
         </Button>
