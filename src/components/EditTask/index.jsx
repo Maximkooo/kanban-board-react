@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PRIORITY } from '../../common/constants';
 import mockData from '../../mockData';
 import { useNavigate, useParams } from 'react-router-dom';
-const EditTask = ({}) => {
+const EditTask = () => {
 	const someDate = new Date();
 	const date = someDate.setDate(someDate.getDate());
 	const defaultValue = new Date(date).toISOString().split('T')[0];
@@ -50,30 +50,29 @@ const EditTask = ({}) => {
 		e.preventDefault();
 		//check on existing task to update
 		if (id) {
-			setTaskForm((prevState) => ({ ...prevState, id }));
-			mockData.map((category) => ({
-				...category,
-				tasks: category.tasks.map((task) => {
-					if (id === task.id) {
-						return {};
+
+			mockData.forEach((element, dataIndex) => {
+				mockData[dataIndex].tasks.forEach((task, taskIndex) => {
+					if (task.id === id) {
+						mockData[dataIndex].tasks[taskIndex] = taskForm;
 					}
-					return task;
-				}),
-			}));
+				})
+			});
+			console.log(mockData);
 		} else {
 			mockData[0].tasks.push(taskForm);
 		}
 		//clear the edit task state
-		console.log(taskForm);
-		// navigate('/dashboard');
-		setTaskForm({
-			title: '',
-			description: '',
-			assignee: '',
-			priority: 'Low',
-			createdDate: defaultValue,
-			dueDate: '',
-		});
+		// console.log(taskForm);
+		navigate('/dashboard');
+		// setTaskForm({
+		// 	title: '',
+		// 	description: '',
+		// 	assignee: '',
+		// 	priority: 'Low',
+		// 	createdDate: defaultValue,
+		// 	dueDate: '',
+		// });
 		console.log('Form submitted:', taskForm);
 	};
 	return (
